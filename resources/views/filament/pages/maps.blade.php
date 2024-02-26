@@ -4,8 +4,14 @@
 
 <div id="map" style="width: auto; height: 450px;"></div>
 
-<script>
+<?php
+$markersData = [
+    ['coordinates' => [-7.2757340, 112.7204266], 'popupContent' => '<b>Hallo !</b><br />I am smk bahrul ulum.'],
+    ['coordinates' => [-7.2933975, 112.8001660], 'popupContent' => '<b>Hallo !</b><br />I am smkn 10 surabaya.']
+];
+?>
 
+<script>
     const map = L.map('map').setView([-7.2996, 112.7637], 13);
 
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -13,11 +19,14 @@
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const marker1 = L.marker([-7.2757340, 112.7204266]).addTo(map)
-        .bindPopup('<b>Hallo !</b><br />I am smk bahrul ulum.').openPopup();
+    // Mengambil data marker dari PHP
+    const markersData = <?php echo json_encode($markersData); ?>;
 
-    const marker2 = L.marker([-7.2933975, 112.8001660]).addTo(map)
-        .bindPopup('<b>Hallo !</b><br />I am smkn 10 surabaya.').openPopup();
+    // Loop through marker data and create markers
+    markersData.forEach(data => {
+        const marker = L.marker(data.coordinates).addTo(map)
+            .bindPopup(data.popupContent).openPopup();
+    });
 
     function onMapClick(e) {
         popup
@@ -27,6 +36,5 @@
     }
 
     map.on('click', onMapClick);
-
 </script>
 </x-filament-panels::page>
