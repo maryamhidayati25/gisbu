@@ -53,6 +53,11 @@ class LoginController extends Controller
 
     public function index()
     {
+        return view('auth.home');
+    }
+
+    public function auth()
+    {
         $sch = School::where('id', 1)->first();
         return view('auth.login', compact('sch'));
     }

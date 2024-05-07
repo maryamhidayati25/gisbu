@@ -34,14 +34,14 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
           <i class="fas fa-school"></i>
         </div>
-        <div class="sidebar-brand-text mx-1">PKL SMKN 10 GARUT</div>
+        <div class="sidebar-brand-text mx-1">GIS SMK BAHRUL ULUM</div>
       </a>
 
       @php
@@ -83,7 +83,7 @@
       <li class="nav-item active" style="margin-bottom: -10px; margin-top: -10px;">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="fas fa-fw fa-home"></i>
-          <span>Halaman Utama</span></a>
+          <span>Dashboard</span></a>
       </li>
 
       <!-- Nav Item - Profil -->
@@ -330,7 +330,7 @@
       ?>
       @endif
 
-      @if (Auth::user()->is_admin == 1)
+      {{-- @if (Auth::user()->is_admin == 1)
       <?php
       if($mpuji == 0) :
       ?>
@@ -360,7 +360,7 @@
       <?php
       endif;
       ?>
-      @endif
+      @endif --}}
 
       @if (Auth::user()->is_guru == 1 or Auth::user()->is_siswa == 1)
       <!-- Nav Item - Charts -->
@@ -455,8 +455,7 @@
       ?>
       @endif
 
-      @if (Auth::user()->is_guru == 1)
-      <!-- Nav Item - Charts -->
+      <!-- @if (Auth::user()->is_guru == 1)
       <?php
       if($muji == 0) :
       ?>
@@ -484,7 +483,7 @@
       <?php
       endif;
       ?>
-      @endif
+      @endif -->
 
       @if (Auth::user()->is_siswa == 1 or Auth::user()->is_admin == 1)
       <!-- Divider -->
@@ -554,7 +553,7 @@
       ?>
       @endif
 
-      @if (Auth::user()->is_siswa == 1)
+      <!-- @if (Auth::user()->is_siswa == 1)
       <?php
       if($mnil == 0) :
       ?>
@@ -582,7 +581,7 @@
       <?php
       endif;
       ?>
-      @endif
+      @endif -->
 
       <!-- Divider -->
       <hr class="sidebar-divider mb-0">
@@ -765,8 +764,8 @@
       <footer class="sticky-footer" style="background-color: rgba(0, 0, 0, 0);">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; SMKN 10 Garut
-              {{ Carbon\Carbon::today()->format('Y') }}</span> | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+            <span>Copyright &copy; SMK Bahrul Ulum Surabaya
+              {{ Carbon\Carbon::today()->format('Y') }}</span>
 
           </div>
         </div>
@@ -797,19 +796,10 @@
         </div>
         <div class="modal-body">
           <div class=" row">
-            <div class=" col-8">
-              Sistem Informasi ini dibuat dan digunakan untuk keperluan Praktek Kerja Lapangan di Sekolah Menengah
-              Kejuruan Negeri 10 Garut. Sistem ini dibuat sesuai dengan peraturan pemerintah mengenai Praktek Kerja
-              Lapangan.
-            </div>
-            <div class=" col-4">
-              <img src="{{asset('/images/logosmk10.png')}}" alt="smk" width="150" height="150">
+            <div class=" col-18">
+              Sistem Informasi GIS ini dibutt untuk memudahkan siswa dalam mencari dan memilih tempat prakerin serta meninjau siswa.
             </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          Code by: Taopiq Hidayat
-          <img src="{{asset('/images/ITG.png')}}" alt="sttg" width="50" height="50">
         </div>
       </div>
     </div>

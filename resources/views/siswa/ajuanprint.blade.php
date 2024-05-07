@@ -9,8 +9,8 @@
   <meta name="author" content="">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" -->
+    <!-- integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
 
   <title>Print Pengajuan</title>
 </head>
@@ -26,12 +26,12 @@
               </td>
               <td width="80%">
                 <center>
-                  <font size="5">PEMERINTAH PROVINSI JAWA BARAT</font><br>
+                  <font size="5">PEMERINTAH PROVINSI JAWA TIMUR</font><br>
                   <font size="5">DINAS PENDIDIKAN</font><br>
-                  <font size="5"><b>SMK NEGERI 10 GARUT</b></font><br>
-                  <font>Jl. Garut - Tasikmalaya KM.8 Cilawu Telp/Fax (0262) 4891303</font><br>
+                  <font size="5"><b>SMK BAHRUL ULUM SURABAYA</b></font><br>
+                  <font>Jl. Banyu Urip Kidul Molin IIB/69, Banyu Urip, Kec. Sawahan, Kota Surabaya Prov. Jawa Timur</font><br>
                   <font>Website: smkn10.sch.id. e-mail: smknegeri10garut@yahoo.com</font><br>
-                  <font>Garut Kode pos 44181</font>
+                  <font>Kode pos 60225</font>
                 </center>
               </td>
             </tr>
@@ -54,7 +54,7 @@
             </tr>
             <tr>
               <td>Perihal</td>
-              <td>: Permohonan Tempa Praktek Kerja Lapangan</td>
+              <td>: Permohonan Tempa Praktek Kerja Industri</td>
             </tr>
             <tr>
               <td colspan="2" height="20"></td>
@@ -80,13 +80,13 @@
             <tr>
               <td colspan="2">
                 <p class=" text-justify">
-                  Dalam rangka pelaksanakan Praktek Kerja Lapangan (PKL) bagi siswa siswi SMK Negeri 10 Garut tahun
-                  pelajaran 2020/2021, diperlukan kerja sama dengan Dunia Usaha/Industri dan Dunia Kerja
+                  Dalam rangka pelaksanakan Praktek Kerja Industri (PRAKERIN) bagi siswa siswi SMK BAHRUL ULUM Surabaya tahun
+                  pelajaran 2024/2025, diperlukan kerja sama dengan Dunia Usaha/Industri dan Dunia Kerja
                   terkait.<br>
                   Dengan ini Kami mengajukan permohonan kepada Bapak/Ibu selaku Pimpinan DUDIKA untuk dapat bekerja sama
                   menjadi institusi rekanan sekolah Kami, yakni sebagai
-                  tempat pelaksanakan PKL bagi siswa siswi Kami.<br>
-                  Adapun rencana pelaksanakan Praktek Kerja Lapangan tersebut waktunya akan dilaksanakan pada
+                  tempat pelaksanakan Prakerin bagi siswa siswi Kami.<br>
+                  Adapun rencana pelaksanakan Praktek Kerja Industri tersebut waktunya akan dilaksanakan pada
                   tanggal <b>{{date('d/m/Y', strtotime($sch->pkl_mulai))}} -
                     {{date('d/m/Y', strtotime($sch->pkl_sampai))}}.</b><br>
                   Demikian Permohonan ini Kami buat. Atas perhatian dan kerja samanya, Kami ucapkan terimakasih.
@@ -101,7 +101,7 @@
         <table align="right">
           <thead>
             <tr>
-              <td align="center">Garut, {{date('d-m-Y')}}</td>
+              <td align="center">Surabaya, {{date('d-m-Y')}}</td>
             </tr>
             <tr>
               <td colspan="2" height="50"></td>
@@ -139,19 +139,15 @@
               <td colspan="2" height="10"></td>
             </tr>
             <tr>
-              <td>Pimpian DUDIKA<sup>**</sup></td>
+              <td>Nama Industri<sup></sup></td>
               <td>: ...</td>
             </tr>
             <tr>
-              <td>Nama DUDIKA<sup>**</sup></td>
+              <td>Alamat Lengkap Industri<sup>**</sup></td>
               <td>: ...</td>
             </tr>
             <tr>
-              <td>Alamat Lengkap DUDIKA<sup>**</sup></td>
-              <td>: ...</td>
-            </tr>
-            <tr>
-              <td>No Telp/Kontak DUDIKA<sup>**</sup></td>
+              <td>No Telp/Kontak Industri<sup>**</sup></td>
               <td>: ...</td>
             </tr>
             <tr>
@@ -171,7 +167,7 @@
             <tr>
               <td colspan="2">
                 <p class=" text-justify">
-                  Penempatan siswa SMK Negeri 10 Garut untuk melaksanakan Praktek Kerja Lapangan di DUDIKA<sup>**</sup>
+                  Penempatan siswa SMK Bahrul Ulum Surabaya untuk melaksanakan Praktek Kerja Industri di Perusahaan<sup></sup>
                   Kami, sebanyak ... orang. Dimulai dari tanggal <b>{{date('d/m/Y', strtotime($sch->pkl_mulai))}} -
                     {{date('d/m/Y', strtotime($sch->pkl_sampai))}}.</b><br><br>
                   Nama - nama siswanya diantaranya:
@@ -205,7 +201,7 @@
               <td height="20"></td>
             </tr>
             <tr>
-              <td align="center">Garut, ...............</td>
+              <td align="center">Surabaya, ...............</td>
             </tr>
             <tr>
               <td height="20"></td>
@@ -229,10 +225,6 @@
             <tr>
               <td>Catatan:</td>
               <td><sup>*</sup>) Coret yang tidak perlu</td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><sup>**</sup>) DUDIKA: Dunia Usaha/Industri dan Dunia Kerja</td>
             </tr>
           </tbody>
         </table>

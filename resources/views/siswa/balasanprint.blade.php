@@ -9,9 +9,7 @@
   <meta name="author" content="">
 
   <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+  <!-- <link href="{{ asset('print/bootstrap.min.css') }}" rel="stylesheet"> -->
   <title>Print Balasan</title>
 </head>
 
@@ -39,20 +37,17 @@
             <tr>
               <td colspan="2" height="10"></td>
             </tr>
+        
             <tr>
-              <td>Pimpian DUDIKA<sup>**</sup></td>
-              <td>: {{$industri->ketua}}</td>
-            </tr>
-            <tr>
-              <td>Nama DUDIKA<sup>**</sup></td>
+              <td>Nama Perusahaan<sup>**</sup></td>
               <td>: {{$industri->nama}}</td>
             </tr>
             <tr>
-              <td>Alamat Lengkap DUDIKA<sup>**</sup></td>
+              <td>Alamat Lengkap Perusahaan<sup>**</sup></td>
               <td>: {{$industri->alamat}}</td>
             </tr>
             <tr>
-              <td>No Telp/Kontak DUDIKA<sup>**</sup></td>
+              <td>No Telp/Kontak Perusahaan<sup>**</sup></td>
               <td>: {{$industri->n_wa}}</td>
             </tr>
             <tr>
@@ -76,7 +71,7 @@
             <tr>
               <td colspan="2">
                 <p class=" text-justify">
-                  Penempatan siswa SMK Negeri 10 Garut untuk melaksanakan Praktek Kerja Lapangan di DUDIKA<sup>**</sup>
+                  Penempatan Siswa SMK Bahrul Ulum Surabaya untuk melaksanakan Praktek Kerja Industri di Perusahaan<sup></sup>
                   Kami, sebanyak {{$diterima}} orang. Dimulai dari tanggal
                   <b>{{date('d/m/Y', strtotime($sch->pkl_mulai))}} -
                     {{date('d/m/Y', strtotime($sch->pkl_sampai))}}.</b><br><br>
@@ -119,7 +114,7 @@
               <td height="20"></td>
             </tr>
             <tr>
-              <td align="center">Garut, {{date('d-m-Y')}}</td>
+              <td align="center">Surabaya, {{date('d-m-Y')}}</td>
             </tr>
             <tr>
               <td align="center"><b>Pimpinan {{$industri->nama}}</b></td>
@@ -147,10 +142,6 @@
               <td>Catatan:</td>
               <td><sup>*</sup>) Coret yang tidak perlu</td>
             </tr>
-            <tr>
-              <td></td>
-              <td><sup>**</sup>) DUDIKA: Dunia Usaha/Industri dan Dunia Kerja</td>
-            </tr>
           </tbody>
         </table>
       </div>
@@ -158,10 +149,7 @@
   </div>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-  </script>
-
+  <script src="{{ asset('print/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

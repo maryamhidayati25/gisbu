@@ -34,7 +34,7 @@
 </style>
 @endsection
 
-@section('title', 'Halaman Utama')
+@section('title', 'GISBU')
 
 @section('isi')
 <div class=" container-fluid">
@@ -52,11 +52,11 @@
         <div class=" col-4">
           <div class=" card border-warning text-warning" style="height: 120px">
             <div class=" card-body">
-              <h6 class=" card-title">Jumlah Siswa Terdaftar</h6>
+              <h6 class=" card-title">Jumlah Seluruh Siswa</h6>
               @if ($bnyksiswa == null)
-              <span>0 orang</span>
+              <span>0 Siswa</span>
               @else
-              <span>{{$bnyksiswa}} orang</span>
+              <span>{{$bnyksiswa}} Siswa</span>
               @endif
             </div>
           </div>
@@ -65,7 +65,7 @@
           <div class=" card border-success text-success" style="height: 120px">
             <div class=" card-body">
               <h6 class=" card-title text-bold">Jumlah Guru Pembimbing</h6>
-              <span>{{$indu}} orang</span>
+              <span>{{$indu}} Guru</span>
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@
                       style="width: {{($jumterima / $bnyksiswa)*100}}%" aria-valuenow="{{$jumterima}}" aria-valuemin="0"
                       aria-valuemax="100"></div>
                   </div>
-                  <span>{{$jumterima}}/{{$bnyksiswa}} orang</span>
+                  <span>{{$jumterima}}/{{$bnyksiswa}} Siswa</span>
                   @endif
                 </div>
               </div>
@@ -159,11 +159,7 @@
                     <td>Pelaksanaan PKL</td>
                     <td>{{$sch->pkl_mulai}} - {{$sch->pkl_sampai}}</td>
                   </tr>
-                  <tr>
-                    <th>4</th>
-                    <td>Sidang / Pengujian</td>
-                    <td>{{$sch->uji_mulai}} - {{$sch->uji_sampai}}</td>
-                  </tr>
+
                 </tbody>
               </table>
             </div>

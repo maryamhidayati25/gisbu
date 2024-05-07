@@ -40,8 +40,8 @@ use App\Http\Controllers\VisitsController;
 */
 
 // sistem auth (login, registrasi, lupa sandi)
-Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('flogin');
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('flogin');
+Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'index'])->name('index');
+Route::get('/auth', [App\Http\Controllers\Auth\LoginController::class, 'auth'])->name('flogin');
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::get('/auth/google', [App\Http\Controllers\Auth\LoginController::class, 'redirectToGoogle'])->name('google_login');
 Route::get('/auth/google/callback', [App\Http\Controllers\Auth\LoginController::class, 'handleGoogleCallback'])->name('google_callback');

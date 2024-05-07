@@ -21,10 +21,6 @@
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang!</h1>
                                     </div>
                                     <br>
-                                    <center>
-                                        <p>Repost by <a href='https://stokcoding.com/' title='StokCoding.com'
-                                                target='_blank'>StokCoding.com</a></p>
-                                    </center>
 
                                     <form action="{{ route('login') }}" method="post" class="user">
                                         @if (Session::get('fai'))
@@ -67,12 +63,16 @@
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Masuk
                                         </button>
-                                        <hr>
-                                        <a href="{{ route('google_login') }}" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Masuk dengan Akun Google
-                                        </a>
                                     </form>
                                     <hr>
+                                    
+                                    <center>
+                                        <h4>
+                                            <?php 
+                                                echo $sch->nama;
+                                            ?>
+                                        </h4>
+                                    </center>
                                     {{-- <div class="text-center">
                                     <a class="small" href="{{ route('forgot') }}">Lupa Password?</a>
                             </div> --}}
