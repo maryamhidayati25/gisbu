@@ -112,7 +112,7 @@ class StudentsController extends Controller
         $user->email = strtolower($request->email);
         $user->n_wa = strtolower($request->n_wa);
         $user->email_verified_at = \Carbon\Carbon::now();
-        $user->password = Hash::make('Smkn10Garut');
+        $user->password = Hash::make('12345678');
         $user->is_admin = false;
         $user->is_guru = false;
         $user->is_industri = false;
@@ -266,10 +266,10 @@ class StudentsController extends Controller
             'n_wa.required'     => 'Nomor HP wajib diisi',
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
+        // $validator = Validator::make($request->all(), $rules, $messages);
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput($request->all);
+        // }
 
         $user = User::where('id', $request->ids)
             ->update([

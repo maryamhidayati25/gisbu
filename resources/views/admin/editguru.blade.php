@@ -27,58 +27,45 @@
                   <span class="text-danger">@error('nama_guru') {{ $message }} @enderror</span>
                 </div>
                 <div class="form-group">
-                  <label for="jk_guru">Jenis Kelamin</label>
-                  <select class="form-control form-select form-select-md" name="jk_guru" id="jk_guru">
-                    @if ($teacher->jk)
-                    <option value="{{ $teacher->jk }}" selected>{{ $teacher->jk }}</option>
-                    @endif
+                  <label for="jk">Jenis Kelamin</label>
+                  <select class="form-control form-select form-select-md" name="jk" id="jk">
                     <option value="">Pilih Jenis Kelamin</option>
-                    <option value="Laki - laki">Laki - laki</option>
-                    <option value="Perempuan">Perempuan</option>
+                    <option <?=($teacher->jk == "Laki - laki")?"selected":""?> value="Laki - laki">Laki - laki</option>
+                    <option <?=($teacher->jk == "Perempuan")?"selected":""?> value="Perempuan">Perempuan</option>
                   </select>
-                  <span class="text-danger">@error('jk_guru') {{ $message }} @enderror</span>
+                  <span class="text-danger">@error('jk') {{ $message }} @enderror</span>
                 </div>
                 <div class="form-group">
-                  <label for="jurusan_guru">Jurusan</label>
-                  <select class="form-control form-select form-select-md" name="jurusan_guru" id="jurusan_guru">
+                  <label for="jurusan">Jurusan</label>
+                  <select class="form-control form-select form-select-md" name="jurusan" id="jurusan">
                     @foreach( $jurusan as $data )
-                    @if ($teacher->jurusan)
-                    <option value="{{ ucfirst($teacher->jurusan) }}" selected>{{ ucfirst($teacher->jurusan) }}</option>
-                    @endif
-                    <option value="{{ $data->jurusan }}">{{ $data->jurusan }}</option>
+                    <option <?=($teacher->jurusan == $teacher->jurusan)?"selected":""?> value="{{ $data->jurusan }}">{{ $data->jurusan }}</option>
                     @endforeach
                   </select>
-                  <span class="text-danger">@error('jurusan_guru') {{ $message }} @enderror</span>
+                  <span class="text-danger">@error('jurusan') {{ $message }} @enderror</span>
                 </div>
             </div>
             <div class="col col-md-6">
-              <div class="form-group">
-                <label for="provinsi_guru">Provinsi</label>
-                <select class="form-control form-select form-select-md" name="provinsi_guru" id="provinsi_guru"
+            <div class="form-group">
+                <label for="provinsi">Provinsi</label>
+                <select class="form-control form-select form-select-md" name="provinsi" id="provinsi"
                   data-dependent="kota">
                   @foreach( $provinsi as $data )
-                  @if ($teacher->provinsi)
-                  <option value="{{ $teacher->provinsi }}" selected>{{ $teacher->provinsi }}</option>
-                  @endif
-                  <option value="{{ $data->provinsi }}">{{ $data->provinsi }}</option>
+                  <option <?=($teacher->provinsi == $data->provinsi)?"selected":""?> value="{{ $data->provinsi }}">{{ $data->provinsi }}</option>
                   @endforeach
                 </select>
-                <span class="text-danger">@error('provinsi_guru') {{ $message }}
+                <span class="text-danger">@error('provinsi') {{ $message }}
                   @enderror</span>
               </div>
               <div class="form-group">
-                <label for="kota_guru">Kabupaten/Kota</label>
-                <select class="form-control form-select form-select-md" name="kota_guru" id="kota_guru"
-                  data-dependent="kota">
+                <label for="kota">Kota</label>
+                <select class="form-control form-select form-select-md" name="kota" id="kota" data-dependent="kota">
                   @foreach( $kota as $data )
-                  @if ($teacher->kota)
-                  <option value="{{ $teacher->kota }}" selected>{{ $teacher->kota }}</option>
-                  @endif
-                  <option value="{{ $data->jk }} {{ $data->kota }}">{{ $data->kota }}
+                  <option <?=($teacher->kota == $data->jk." ".$data->kota)?"selected":""?> value="{{ $data->jk }} {{ $data->kota }}">{{ $data->kota }}
                     ({{ $data->jk }} {{ $data->kota }})</option>
                   @endforeach
                 </select>
-                <span class="text-danger">@error('kota_guru') {{ $message }}
+                <span class="text-danger">@error('kota') {{ $message }}
                   @enderror</span>
               </div>
               <div class="form-group">

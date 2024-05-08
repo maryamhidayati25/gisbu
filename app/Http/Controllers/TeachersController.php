@@ -114,7 +114,7 @@ class TeachersController extends Controller
         $user->email = strtolower($request->email_guru);
         $user->n_wa = strtolower($request->n_wa_guru);
         $user->email_verified_at = \Carbon\Carbon::now();
-        $user->password = Hash::make('Smkn10Garut');
+        $user->password = Hash::make('12345678');
         $user->is_admin = false;
         $user->is_guru = true;
         $user->is_industri = false;

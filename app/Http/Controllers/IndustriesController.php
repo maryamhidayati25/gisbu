@@ -156,7 +156,7 @@ class IndustriesController extends Controller
         $user->email = strtolower($request->email_indu);
         $user->n_wa = strtolower($request->n_wa_indu);
         $user->email_verified_at = \Carbon\Carbon::now();
-        $user->password = Hash::make('Smkn10Garut');
+        $user->password = Hash::make('12345678');
         $user->is_admin = false;
         $user->is_guru = false;
         $user->is_industri = true;
