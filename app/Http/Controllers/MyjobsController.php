@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Session;
-// use PDF;
+use Illuminate\Support\Facades\Storage;
 
 class MyjobsController extends Controller
 {
@@ -140,10 +140,13 @@ class MyjobsController extends Controller
         }
     }
 
-    public function file_tugas(Myjob $myjob)
+    public function file_tugas($id)
     {
-        // $pdf = PDF::setOptions(['dpi' => 150, 'defaultFont' => 'sans-serif'])->loadview(asset('/storage/haskerja/' . $myjob->file));
-        // return $pdf->setPaper('a4')->stream();
+        $myjob = Myjob::where('id', $id)->first();
+
+        $path = storage_path('app/public/haskerja/' . $myjob->file);
+
+        return response()->file($path);
     }
 
     /**

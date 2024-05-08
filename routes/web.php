@@ -190,7 +190,7 @@ Route::post('/edit_tugas', [App\Http\Controllers\TasksController::class, 'update
 Route::post('/serahkan', [App\Http\Controllers\MyjobsController::class, 'serahkan'])->name('serahkan_tugas');
 Route::get('/hasil_kerja/{id}', [App\Http\Controllers\MyjobsController::class, 'hasil_kerja']);
 Route::post('/nilai_tugas', [App\Http\Controllers\MyjobsController::class, 'update'])->name('nilai_tugas');
-Route::get('/file_tugas/{Myjob}', [App\Http\Controllers\MyjobsController::class, 'file_tugas']);
+Route::get('/file_tugas/{id}', [App\Http\Controllers\MyjobsController::class, 'file_tugas']);
 
 // kuis
 Route::get('/buat_kuis/{idk}', [App\Http\Controllers\QuizzesController::class, 'create'])->name('buat_kuis');
