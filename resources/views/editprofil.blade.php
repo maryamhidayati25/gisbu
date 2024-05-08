@@ -8,7 +8,7 @@
 
   @if (Auth::user()->is_admin == 1)
   <div class="row">
-    <div class="col">
+    <div class="col col-md-12">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-3 p-5">
@@ -185,7 +185,7 @@
 
   @if (Auth::user()->is_guru == 1)
   <div class="row">
-    <div class="col col-md-8">
+    <div class="col col-md-12">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-4 p-5">
@@ -313,7 +313,7 @@
 
   @if (Auth::user()->is_industri == 1)
   <div class="row">
-    <div class="col col-md-8">
+    <div class="col col-md-12">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-4 p-5">
@@ -457,7 +457,7 @@
 
   @if (Auth::user()->is_siswa == 1)
   <div class="row">
-    <div class="col col-md-8">
+    <div class="col col-md-12">
       <div class="card">
         <div class="row g-0">
           <div class="col-md-4 p-5">

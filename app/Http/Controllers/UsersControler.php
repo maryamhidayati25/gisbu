@@ -756,10 +756,10 @@ class UsersControler extends Controller
             'asswrdbaru_confirmation.required'  => 'Konfirmasi Password wajib diisi'
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
+        // $validator = Validator::make($request->all(), $rules, $messages);
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput($request->all);
+        // }
 
         $user = User::where('id', Auth::user()->id)->first();
         if (Hash::check($request->asswrdama, $user->password)) {
