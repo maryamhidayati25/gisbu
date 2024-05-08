@@ -11,16 +11,12 @@
         </a>
     </div>
     </nav>
-    <?php
-        $markersData = null;
-    ?>
-    
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <div id="map" style="width: auto; height: 700px;"></div>
+        <div id="map" style="width: auto; height: 100vh;"></div>
 
         <script>
-            const map = L.map('map').setView([-7.2996, 112.7637], 13);
+            const map = L.map('map').setView([-7.29, 112.725], 13);
 
             const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,

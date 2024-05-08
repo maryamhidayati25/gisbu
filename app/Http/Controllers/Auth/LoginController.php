@@ -18,6 +18,7 @@ use Google_Client;
 use Google_Service_People;
 use Illuminate\Database\Eloquent\Scope;
 use App\Models\School;
+use App\Models\Industrie;
 
 class LoginController extends Controller
 {
@@ -53,7 +54,22 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('auth.home');
+        $sch = School::where('id', 1)->first();
+
+        $markersData[] = [
+            'coordinates' => [$sch->latitude, $sch->longitude],
+            'popupContent' => '<b>'.$sch->nama.'</b><br/>'.$sch->alamat,
+        ];
+
+        $industri = Industrie::select('nama', 'alamat', 'latitude', 'longitude')->get();
+        foreach ($industri as $ind) {
+            $markersData[] = [
+                'coordinates' => [$ind->latitude, $ind->longitude],
+                'popupContent' => '<b>'.$ind->nama.'</b><br />'.$ind->alamat,
+            ];
+        }
+
+        return view('auth.home', compact('markersData'));
     }
 
     public function auth()
