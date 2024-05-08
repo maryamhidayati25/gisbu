@@ -78,7 +78,7 @@ class SubmissionsController extends Controller
             ->get();
         $sch = School::where('id', 1)->first();
 
-        $path = base_path('public/images/jabar.png');
+        $path = base_path('public/images/smkbu.jpeg');
         $tyve = pathinfo($path, PATHINFO_EXTENSION);
         $data = file_get_contents($path);
         $gambar = 'data:image/' . $tyve . ';base64,' . base64_encode($data);

@@ -30,8 +30,8 @@
                   <font size="5">DINAS PENDIDIKAN</font><br>
                   <font size="5"><b>SMK BAHRUL ULUM SURABAYA</b></font><br>
                   <font>Jl. Banyu Urip Kidul Molin IIB/69, Banyu Urip, Kec. Sawahan, Kota Surabaya Prov. Jawa Timur</font><br>
-                  <font>Website: smkn10.sch.id. e-mail: smknegeri10garut@yahoo.com</font><br>
-                  <font>Kode pos 60225</font>
+                  <font>Website: https://smkbahrululumsurabaya.sch.id/. e-mail: smk.bahrululum@gmail.com</font><br>
+                  <font>Kode pos 60255</font>
                 </center>
               </td>
             </tr>
