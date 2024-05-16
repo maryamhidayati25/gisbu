@@ -85,8 +85,8 @@ class SubmissionsController extends Controller
 
         $pdf = PDF::setOptions(['defaultFont' => 'times-new-roman', 'isHtml5ParseEnabled' => true, 'isRemoteEnabled' => true])->loadview('siswa.ajuanprint', compact('siswa', 'industri', 'sch', 'ajuan', 'diterima', 'siswaterima', 'gambar'));
         return $pdf->setPaper('a4')->stream();
-        // return $pdf->download('laporan-pegawai-pdf');
-        // return view('siswa.ajuanprint', compact('siswa', 'industri', 'sch', 'ajuan', 'diterima', 'siswaterima', 'gambar'));
+        return $pdf->download('laporan-pegawai-pdf');
+        return view('siswa.ajuanprint', compact('siswa', 'industri', 'sch', 'ajuan', 'diterima', 'siswaterima', 'gambar'));
     }
 
     public function print_balasan($idi)

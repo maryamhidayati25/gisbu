@@ -72,7 +72,7 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nis'       => 'required|size:10',
+            'nis'       => 'required|size:9',
             'nama'      => 'required|min:2|max:50',
             'jk'        => 'required',
             'jurusan'   => 'required',
@@ -86,7 +86,7 @@ class StudentsController extends Controller
 
         $messages = [
             'nis.required'      => 'Nomor Induk Siswa wajib diisi',
-            'nis.size'          => 'Nomor Induk Siswa harus 10 karakter',
+            'nis.size'          => 'Nomor Induk Siswa harus 9 karakter',
             'nama.required'     => 'Nama Lengkap wajib diisi',
             'nama.min'          => 'Nama lengkap minimal 2 karakter',
             'nama.max'          => 'Nama lengkap maksimal 50 karakter',
@@ -197,7 +197,7 @@ class StudentsController extends Controller
         $ceken = User::where('id', $request->ids)->first();
         if ($ceken->email == $request->email_guru && $ceken->n_wa == $request->n_wa_guru) {
             $rules = [
-                'nis'       => 'required|size:10',
+                'nis'       => 'required|size:9',
                 'nama'      => 'required|min:2|max:50',
                 'jk'        => 'required',
                 'jurusan'   => 'required',

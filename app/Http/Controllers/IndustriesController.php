@@ -164,14 +164,14 @@ class IndustriesController extends Controller
         $regist = $user->save();
 
         if ($regist) {
-            $mj = app('App\Http\Controllers\Auth\IndustriesController')->getmj($request->terjur1, $request->terjur2, $request->terjur3, $request->terjur4, $request->terjur5, $request->mj[1], $request->mj[2], $request->mj[3], $request->mj[4], $request->mj[5]);
+            // $mj = app('App\Http\Controllers\IndustriesController')->getmj($request->terjur1, $request->terjur2, $request->terjur3, $request->terjur4, $request->terjur5, $request->mj[1], $request->mj[2], $request->mj[3], $request->mj[4], $request->mj[5]);
 
             $iduser = DB::table('users')->where('email', $request->email_indu)->value('id');
 
             $indu = new Industrie;
             $indu->nama = ucwords(strtolower($request->nama_indu));
             $indu->bidang = ucwords(strtolower($request->bidang));
-            $indu->menerima_jurusan = ucwords(strtolower($mj));
+            // $indu->menerima_jurusan = ucwords(strtolower($mj));
             $indu->alamat = ucwords(strtolower($request->alamat_indu));
             $indu->kota = ucwords(strtolower($request->kota_indu));
             $indu->provinsi = ucwords(strtolower($request->provinsi_indu));
@@ -196,90 +196,90 @@ class IndustriesController extends Controller
         }
     }
 
-    public function getmj($tj1 = null, $tj2 = null, $tj3 = null, $tj4 = null, $tj5 = null, $mj1 = null, $mj2 = null, $mj3 = null, $mj4 = null, $mj5 = null)
-    {
-        if ($tj1 != null) {
-            $mj = "" . $mj1 . "";
-            if ($tj2 != null) {
-                $mj = "" . $mj1 . " , " . $mj2 . "";
-                if ($tj3 != null) {
-                    $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . "";
-                    if ($tj4 != null) {
-                        $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj4 . "";
-                        if ($tj5 != null) {
-                            $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
-                        }
-                    } elseif ($tj5 != null) {
-                        $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj5 . "";
-                    }
-                } elseif ($tj4 != null) {
-                    $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj4 . "";
-                    if ($tj5 != null) {
-                        $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj4 . " , " . $mj5 . "";
-                    }
-                } elseif ($tj5 != null) {
-                    $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj5 . "";
-                }
-            } elseif ($tj3 != null) {
-                $mj = "" . $mj1 . " , " . $mj3 . "";
-                if ($tj4 != null) {
-                    $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj4 . "";
-                    if ($tj5 != null) {
-                        $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
-                    }
-                } elseif ($tj5 != null) {
-                    $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj5 . "";
-                }
-            } elseif ($tj4 != null) {
-                $mj = "" . $mj1 . " , " . $mj4 . "";
-                if ($tj5 != null) {
-                    $mj = "" . $mj1 . " , " . $mj4 . " , " . $mj5 . "";
-                }
-            } elseif ($tj5 != null) {
-                $mj = "" . $mj1 . " , " . $mj5 . "";
-            }
-        } elseif ($tj2 != null) {
-            $mj = "" . $mj2 . "";
-            if ($tj3 != null) {
-                $mj = "" . $mj2 . " , " . $mj3 . "";
-                if ($tj4 != null) {
-                    $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj4 . "";
-                    if ($tj5 != null) {
-                        $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
-                    }
-                } elseif ($tj5 != null) {
-                    $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj5 . "";
-                }
-            } elseif ($tj4 != null) {
-                $mj = "" . $mj2 . " , " . $mj4 . "";
-                if ($tj5 != null) {
-                    $mj = "" . $mj2 . " , " . $mj4 . " , " . $mj5 . "";
-                }
-            } elseif ($tj5 != null) {
-                $mj = "" . $mj2 . " , " . $mj5 . "";
-            }
-        } elseif ($tj3 != null) {
-            $mj = "" . $mj3 . "";
-            if ($tj4 != null) {
-                $mj = "" . $mj3 . " , " . $mj4 . "";
-                if ($tj5 != null) {
-                    $mj = "" . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
-                }
-            } elseif ($tj5 != null) {
-                $mj = "" . $mj3 . " , " . $mj5 . "";
-            }
-        } elseif ($tj4 != null) {
-            $mj = "" . $mj4 . "";
-            if ($tj5 != null) {
-                $mj = "" . $mj4 . " , " . $mj5 . "";
-            }
-        } elseif ($tj5 != null) {
-            $mj = "" . $mj5 . "";
-        } else {
-            $mj = null;
-        }
-        return $mj;
-    }
+    // public function getmj($tj1 = null, $tj2 = null, $tj3 = null, $tj4 = null, $tj5 = null, $mj1 = null, $mj2 = null, $mj3 = null, $mj4 = null, $mj5 = null)
+    // {
+    //     if ($tj1 != null) {
+    //         $mj = "" . $mj1 . "";
+    //         if ($tj2 != null) {
+    //             $mj = "" . $mj1 . " , " . $mj2 . "";
+    //             if ($tj3 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . "";
+    //                 if ($tj4 != null) {
+    //                     $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj4 . "";
+    //                     if ($tj5 != null) {
+    //                         $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
+    //                     }
+    //                 } elseif ($tj5 != null) {
+    //                     $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj3 . " , " . $mj5 . "";
+    //                 }
+    //             } elseif ($tj4 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj4 . "";
+    //                 if ($tj5 != null) {
+    //                     $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj4 . " , " . $mj5 . "";
+    //                 }
+    //             } elseif ($tj5 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj2 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj3 != null) {
+    //             $mj = "" . $mj1 . " , " . $mj3 . "";
+    //             if ($tj4 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj4 . "";
+    //                 if ($tj5 != null) {
+    //                     $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
+    //                 }
+    //             } elseif ($tj5 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj3 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj4 != null) {
+    //             $mj = "" . $mj1 . " , " . $mj4 . "";
+    //             if ($tj5 != null) {
+    //                 $mj = "" . $mj1 . " , " . $mj4 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj5 != null) {
+    //             $mj = "" . $mj1 . " , " . $mj5 . "";
+    //         }
+    //     } elseif ($tj2 != null) {
+    //         $mj = "" . $mj2 . "";
+    //         if ($tj3 != null) {
+    //             $mj = "" . $mj2 . " , " . $mj3 . "";
+    //             if ($tj4 != null) {
+    //                 $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj4 . "";
+    //                 if ($tj5 != null) {
+    //                     $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
+    //                 }
+    //             } elseif ($tj5 != null) {
+    //                 $mj = "" . $mj2 . " , " . $mj3 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj4 != null) {
+    //             $mj = "" . $mj2 . " , " . $mj4 . "";
+    //             if ($tj5 != null) {
+    //                 $mj = "" . $mj2 . " , " . $mj4 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj5 != null) {
+    //             $mj = "" . $mj2 . " , " . $mj5 . "";
+    //         }
+    //     } elseif ($tj3 != null) {
+    //         $mj = "" . $mj3 . "";
+    //         if ($tj4 != null) {
+    //             $mj = "" . $mj3 . " , " . $mj4 . "";
+    //             if ($tj5 != null) {
+    //                 $mj = "" . $mj3 . " , " . $mj4 . " , " . $mj5 . "";
+    //             }
+    //         } elseif ($tj5 != null) {
+    //             $mj = "" . $mj3 . " , " . $mj5 . "";
+    //         }
+    //     } elseif ($tj4 != null) {
+    //         $mj = "" . $mj4 . "";
+    //         if ($tj5 != null) {
+    //             $mj = "" . $mj4 . " , " . $mj5 . "";
+    //         }
+    //     } elseif ($tj5 != null) {
+    //         $mj = "" . $mj5 . "";
+    //     } else {
+    //         $mj = null;
+    //     }
+    //     return $mj;
+    // }
 
     /**
      * Display the specified resource.
@@ -447,7 +447,7 @@ class IndustriesController extends Controller
             ]);
 
         if ($user) {
-            $mj = app('App\Http\Controllers\Auth\IndustriesController')->getmj($request->terjur1, $request->terjur2, $request->terjur3, $request->terjur4, $request->terjur5, $request->mj[1], $request->mj[2], $request->mj[3], $request->mj[4], $request->mj[5]);
+            // $mj = app('App\Http\Controllers\IndustriesController')->getmj($request->terjur1, $request->terjur2, $request->terjur3, $request->terjur4, $request->terjur5, $request->mj[1], $request->mj[2], $request->mj[3], $request->mj[4], $request->mj[5]);
 
             $iduser = DB::table('users')->where('email', $request->email_indu)->value('id');
 
@@ -455,7 +455,7 @@ class IndustriesController extends Controller
                 ->update([
                     'nama' => ucwords(strtolower($request->nama_indu)),
                     'bidang' => ucwords(strtolower($request->bidang)),
-                    'menerima_jurusan' => ucwords(strtolower($mj)),
+                    // 'menerima_jurusan' => ucwords(strtolower($mj)),
                     'alamat' => ucwords(strtolower($request->alamat_indu)),
                     'kota' => ucwords(strtolower($request->kota_indu)),
                     'provinsi' => ucwords(strtolower($request->provinsi_indu)),

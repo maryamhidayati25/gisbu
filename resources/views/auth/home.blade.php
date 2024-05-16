@@ -5,10 +5,28 @@
 @section('isi')
     <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand">GIS SMK BAHRUL ULUM</a>
-        <a class="small" href="{{ route('flogin') }}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">GIS SMK BAHRUL ULUM</h1>
+        {{-- <a class="navbar-brand">GIS SMK BAHRUL ULUM</a> --}}
+        {{-- <a class="small" href="{{ route('flogin') }}">
             <button class="btn btn-outline-success" type="submit">Login</button>
-        </a>
+        </a> --}}
+        <tr>
+            <td colspan="2">
+              <p class=" text-justify">
+               Geographic Information System merupakan sistem informasi lokasi prakerin di SMK Bahrul Ulum, selain berfungsi untuk mencari lokasi prakerin GISBU juga sebagai sistem informasi monotoring siswa selama kegiatan prakerin berjalan.<br>
+              </p>
+        <div class="text-right">
+            <a class="small" href="{{ route('flogin') }}">
+                <button class="btn btn-outline-success" type="submit">Login</button>
+            </a> 
+            </div>
+            <div class="text-left mb-4">
+                <img src="{{ asset('images/gambar_login.jpg') }}" alt="PT Taspen Surabaya" width="150">
+            </div>
+            
     </div>
     </nav>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
