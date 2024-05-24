@@ -79,14 +79,31 @@ class HomeController extends Controller
             }
             $json1 = json_encode(array('results1' => $industri));
             $json2 = json_encode(array('results2' => $siswa));
-            return view('home', compact('indu', 'guru', 'bnyksiswa', 'sch', 'jumterima', 'jumnerima', 'industri', 'siswa', 'json1', 'json2'));
+            $markersData[] = [];
+            $count = 0;
+            foreach($industri as $ind){
+                $markersData[$count] = [
+                'coordinates' => [$ind->latitude, $ind->longitude],
+                'popupContent' => '<b>'.$ind->nama.'</b><br />'.$ind->alamat,
+                ];
+                $count++;
+            }
+            $marker = json_encode($markersData);
+            return view('home', compact('indu', 'guru', 'bnyksiswa', 'sch', 'jumterima', 'jumnerima', 'industri', 'siswa', 'json1', 'json2','marker'));
         } elseif (Auth::user()->is_guru == 1) {
             $guru = Teacher::where('id_user', Auth::user()->id)->first();
             $siswa = Placement::where('n_induk', $guru->n_induk)->select('nis')->count();
             $indu = Placement::where('n_induk', $guru->n_induk)->select('id_industri')->count();
             $data = Test::where('pembimbing', $guru->n_induk)->orWhere('penguji', $guru->n_induk)->get();
             $kunjungan = Visit::where('n_induk', $guru->n_induk)->count();
-            return view('home', compact('data', 'indu', 'guru', 'siswa', 'sch', 'kunjungan'));
+            $sch = School::where('id', 1)->first();
+            $markersData[0] = [
+                'coordinates' => [$sch->latitude, $sch->longitude],
+                'popupContent' => '<b>'.$sch->nama.'</b><br />'.$sch->alamat,
+                ];
+
+            $marker = json_encode($markersData);
+            return view('home', compact('data', 'indu', 'guru', 'siswa', 'sch', 'kunjungan','marker','marker'));
         } elseif (Auth::user()->is_industri == 1) {
             $ind = Industrie::where('id_user', Auth::user()->id)->first();
             $siswa = Placement::where('id_industri', $ind->id)->select('nis')->count();
@@ -123,6 +140,13 @@ class HomeController extends Controller
             $tugas = Task::where('oleh', $ind->id_user)->count();
             $json1 = json_encode(array('results' => $industri));
             $json2 = json_encode(array('results' => $students));
+            $sch = School::where('id', 1)->first();
+            $markersData[0] = [
+                'coordinates' => [$sch->latitude, $sch->longitude],
+                'popupContent' => '<b>'.$sch->nama.'</b><br />'.$sch->alamat,
+                ];
+
+            $marker = json_encode($markersData);
             return view('home', compact('indu', 'siswa', 'json1', 'json2', 'tugas', 'absen', 'siswamagang', 'students', 'industri'));
         } elseif (Auth::user()->is_siswa == 1) {
             $siswa = Student::where('id_user', Auth::user()->id)->first();
@@ -150,7 +174,14 @@ class HomeController extends Controller
             $kuisku = Myquiz::where('nis', $siswa->nis)->count();
             $jumtugasku = $tugasku + $kuisku;
             $data = Test::where('nis', $siswa->nis)->first();
-            return view('home', compact('sch', 'jumtugas', 'jumtugasku', 'absen', 'hadir', 'data', 'waktu', 'indu', 'jadw', 'tugas', 'kuis'));
+            $sch = School::where('id', 1)->first();
+            $markersData[0] = [
+                'coordinates' => [$sch->latitude, $sch->longitude],
+                'popupContent' => '<b>'.$sch->nama.'</b><br />'.$sch->alamat,
+                ];
+
+            $marker = json_encode($markersData);
+            return view('home', compact('sch', 'jumtugas', 'jumtugasku', 'absen', 'hadir', 'data', 'waktu', 'indu', 'jadw', 'tugas', 'kuis','marker'));
         }
     }
 
