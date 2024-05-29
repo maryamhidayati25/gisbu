@@ -9,7 +9,7 @@
   <div class="row justify-content-center">
     <div class="col-8 my-3">
 
-      <h3>EDIT PRESENTASI SAYA</h3>
+      {{-- <h3>EDIT PRESENTASI SAYA</h3>
 
       <div class="card text-left mt-3">
         <div class="card-body">
@@ -23,7 +23,7 @@
             <button type="submit" class="btn btn-primary">Serahkan</button>
           </form>
         </div>
-      </div>
+      </div> --}}
 
     </div>
   </div>

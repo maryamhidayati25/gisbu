@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="home">
         <div class="sidebar-brand-icon">
           <i class="fas fa-school"></i>
         </div>
@@ -264,11 +264,11 @@
       @endif
 
       @if (Auth::user()->is_admin == 1)
-      <li class="nav-item" style="margin-top: -10px;">
+      {{-- <li class="nav-item" style="margin-top: -10px;">
         <a class="nav-link" href="{{ route('akses_menu') }}">
           <i class="fas fa-fw fa-th-list"></i>
           <span>Kelola Menu</span></a>
-      </li>
+      </li> --}}
 
       <?php
       if($mps == 0) :
@@ -398,7 +398,7 @@
       <?php
       if($mpres == 0) :
       ?>
-      <li class="nav-item" style="margin-top: -10px;">
+      {{-- <li class="nav-item" style="margin-top: -10px;">
         <a class="nav-link" href="/presentasi" style="pointer-events: none; color: rgb(73, 73, 73);">
           <i class="fas fa-fw fa-ban"></i>
           <span>Presentasi</span></a>
@@ -417,7 +417,7 @@
       <li class="nav-item" style="margin-top: -10px;">
         <a class="nav-link" href="/presentasi" style="pointer-events: none; color: rgb(73, 73, 73);">
           <i class="fas fa-fw fa-ban"></i>
-          <span>Presentasi</span></a>
+          <span>Presentasi</span></a> --}}
       </li>
       <?php
       endif;
