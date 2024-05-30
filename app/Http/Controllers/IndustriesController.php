@@ -115,15 +115,19 @@ class IndustriesController extends Controller
      */
     public function store(Request $request)
     {
+
+        // Menangkap array terjur
+        $terjurArr = $request->input('terjur');
+        $terjur = "";
+        // Lakukan sesuatu dengan array terjur
+        if (is_array($terjurArr)) {
+            $terjur = $terjurArr[0];
+        }
+        
         $rules = [
-            'nama_indu'             => 'required|min:2|max:50',
-            'nama_ketua'            => 'required|min:2|max:50',
-            'ni_ketua'              => 'nullable|min:10|max:18',
-            'terjur1'              => 'nullable',
-            'terjur2'              => 'nullable',
-            'terjur3'              => 'nullable',
-            'terjur4'              => 'nullable',
-            'terjur5'              => 'nullable',
+            'nama_indu'             => 'required',
+            'nama_ketua'            => 'required',
+            'ni_ketua'              => 'nullable',
             'bidang'                => 'required',
             'alamat_indu'           => 'required',
             'kota_indu'             => 'required',
@@ -183,7 +187,7 @@ class IndustriesController extends Controller
             $indu = new Industrie;
             $indu->nama = ucwords(strtolower($request->nama_indu));
             $indu->bidang = ucwords(strtolower($request->bidang));
-            // $indu->menerima_jurusan = ucwords(strtolower($mj));
+            $indu->menerima_jurusan = $terjur;
             $indu->alamat = ucwords(strtolower($request->alamat_indu));
             $indu->kota = ucwords(strtolower($request->kota_indu));
             $indu->provinsi = ucwords(strtolower($request->provinsi_indu));
@@ -323,9 +327,9 @@ class IndustriesController extends Controller
         return view('admin.editindustri', compact('industrie', 'provinsi', 'kota', 'jurusan', 'kelas'));
     }
 
-    public function getjt($jurusan)
+    public function getjt($id, $jurusan)
     {
-        $indu = Industrie::where('id_user', Auth::user()->id)->where('menerima_jurusan', 'like', "%" . $jurusan . "%")->first();
+        $indu = Industrie::where('id', $id)->where('menerima_jurusan', 'like', "%" . $jurusan . "%")->first();
         if ($indu != null) {
             $ada = 1;
         } else {
@@ -343,17 +347,21 @@ class IndustriesController extends Controller
      */
     public function update(Request $request, Industrie $industrie)
     {
+
+        // Menangkap array terjur
+        $terjurArr = $request->input('terjur');
+        $terjur = "";
+        // Lakukan sesuatu dengan array terjur
+        if (is_array($terjurArr)) {
+            $terjur = $terjurArr[0];
+        }
+
         $ceken = User::where('id', $request->idi)->first();
         if ($ceken->email == $request->email_indu && $ceken->n_wa == $request->n_wa_indu) {
             $rules = [
-                'nama_indu'             => 'required|min:2|max:50',
-                'nama_ketua'            => 'required|min:2|max:50',
-                'ni_ketua'              => 'nullable|min:10|max:18',
-                'terjur1'              => 'nullable',
-                'terjur2'              => 'nullable',
-                'terjur3'              => 'nullable',
-                'terjur4'              => 'nullable',
-                'terjur5'              => 'nullable',
+                'nama_indu'             => 'required',
+                'nama_ketua'            => 'required',
+                'ni_ketua'              => 'nullable',
                 'bidang'                => 'required',
                 'alamat_indu'           => 'required',
                 'kota_indu'             => 'required',
@@ -365,33 +373,23 @@ class IndustriesController extends Controller
             ];
         } elseif ($ceken->email == $request->email_indu) {
             $rules = [
-                'nama_indu'             => 'required|min:2|max:50',
-                'nama_ketua'            => 'required|min:2|max:50',
-                'ni_ketua'              => 'nullable|min:10|max:18',
-                'terjur1'              => 'nullable',
-                'terjur2'              => 'nullable',
-                'terjur3'              => 'nullable',
-                'terjur4'              => 'nullable',
-                'terjur5'              => 'nullable',
+                'nama_indu'             => 'required',
+                'nama_ketua'            => 'required',
+                'ni_ketua'              => 'nullable',
                 'bidang'                => 'required',
                 'alamat_indu'           => 'required',
                 'kota_indu'             => 'required',
                 'provinsi_indu'         => 'required',
                 'email_indu'            => 'required|email',
-                'n_wa_indu'             => 'required|unique:users,n_wa',
+                'n_wa_indu'             => 'required',
                 'latitude'              => 'required',
                 'longitude'             => 'required',
             ];
         } elseif ($ceken->n_wa == $request->n_wa_indu) {
             $rules = [
-                'nama_indu'             => 'required|min:2|max:50',
-                'nama_ketua'            => 'required|min:2|max:50',
-                'ni_ketua'              => 'nullable|min:10|max:18',
-                'terjur1'              => 'nullable',
-                'terjur2'              => 'nullable',
-                'terjur3'              => 'nullable',
-                'terjur4'              => 'nullable',
-                'terjur5'              => 'nullable',
+                'nama_indu'             => 'required',
+                'nama_ketua'            => 'required',
+                'ni_ketua'              => 'nullable',
                 'bidang'                => 'required',
                 'alamat_indu'           => 'required',
                 'kota_indu'             => 'required',
@@ -403,20 +401,15 @@ class IndustriesController extends Controller
             ];
         } else {
             $rules = [
-                'nama_indu'             => 'required|min:2|max:50',
-                'nama_ketua'            => 'required|min:2|max:50',
-                'ni_ketua'              => 'nullable|min:10|max:18',
-                'terjur1'              => 'nullable',
-                'terjur2'              => 'nullable',
-                'terjur3'              => 'nullable',
-                'terjur4'              => 'nullable',
-                'terjur5'              => 'nullable',
+                'nama_indu'             => 'required',
+                'nama_ketua'            => 'required',
+                'ni_ketua'              => 'nullable',
                 'bidang'                => 'required',
                 'alamat_indu'           => 'required',
                 'kota_indu'             => 'required',
                 'provinsi_indu'         => 'required',
                 'email_indu'            => 'required|email|unique:users,email',
-                'n_wa_indu'             => 'required|unique:users,n_wa',
+                'n_wa_indu'             => 'required',
                 'latitude'              => 'required',
                 'longitude'             => 'required',
             ];
@@ -467,7 +460,7 @@ class IndustriesController extends Controller
                 ->update([
                     'nama' => ucwords(strtolower($request->nama_indu)),
                     'bidang' => ucwords(strtolower($request->bidang)),
-                    // 'menerima_jurusan' => ucwords(strtolower($mj)),
+                    'menerima_jurusan' => $terjur,
                     'alamat' => ucwords(strtolower($request->alamat_indu)),
                     'kota' => ucwords(strtolower($request->kota_indu)),
                     'provinsi' => ucwords(strtolower($request->provinsi_indu)),

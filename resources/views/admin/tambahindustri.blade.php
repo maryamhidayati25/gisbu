@@ -31,8 +31,7 @@
                   <input type="hidden" name="idj[]" id="idj" value="{{$mj->id}}">
                   <input type="hidden" name="mj[{{$mj->id}}]" id="jt" value="{{$mj->jurusan}}">
                   <div class=" form-check">
-                    <input type="checkbox" class=" form-check-input" value="1" name="terjur{{$mj->id}}" id="terjur"
-                      value="1">
+                    <input type="checkbox" class=" form-check-input" value="{{ $mj->jurusan }}" name="terjur[]">
                     <label for="terjur" class=" form-check-label">{{ $mj->jurusan}}</label>
                   </div>
                   @endforeach

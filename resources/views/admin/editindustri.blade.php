@@ -34,14 +34,12 @@
                   <input type="hidden" name="mj[{{$mj->id}}]" id="jt" value="{{$mj->jurusan}}">
                   <div class=" form-check">
                     @php
-                    $jt = app('App\Http\Controllers\IndustriesController')->getjt($mj->jurusan);
+                    $jt = app('App\Http\Controllers\IndustriesController')->getjt($industrie->id, $mj->jurusan);
                     @endphp
                     @if ($jt == 1)
-                    <input type="checkbox" class=" form-check-input" value="1" name="terjur{{$mj->id}}" id="terjur"
-                      value="1" checked>
+                    <input type="checkbox" class=" form-check-input" value="{{ $mj->jurusan }}" name="terjur[]" checked>
                     @else
-                    <input type="checkbox" class=" form-check-input" value="1" name="terjur{{$mj->id}}" id="terjur"
-                      value="1">
+                    <input type="checkbox" class=" form-check-input" value="{{ $mj->jurusan }}" name="terjur[]">
                     @endif
                     <label for="terjur" class=" form-check-label">{{ $mj->jurusan}}</label>
                   </div>
