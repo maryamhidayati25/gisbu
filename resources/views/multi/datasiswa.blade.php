@@ -1,28 +1,13 @@
 @extends('layout.main')
 
 @section('mystyle')
-<style>
-  /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-  #map-canvas {
-    height: 100%;
-    width: 100%;
-  }
-
-  /* Optional: Makes the sample page fill the window.
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  } */
-</style>
 @endsection
 
 @section('title', 'Data Siswa')
 
 @section('isi')
 @if (Auth::user()->is_industri == 1)
+<div class=" container-fluid">
 <div class="container">
 
   <div class="row justify-content-center">
@@ -90,111 +75,14 @@
 @endif
 
 @if (Auth::user()->is_guru == 1)
+<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
 <div class="container">
-
-  <div class=" card p-0" style="height: 300px;">
+  <!-- <div class=" card p-0" style="height: 300px;">
     <div class=" card-body p-1">
-      <div id="map-canvas"></div>
+      <div id="map" style="width:auto;"></div>
     </div>
-  </div>
-
-  <script>
-    function initialize() {
-          const latitude = -7.2756349,
-              longitude = 107.9162711,
-              center = new google.maps.LatLng(latitude,longitude),
-              mapOptions = {
-                center: center,
-                zoom: 10,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false,
-                disableDefaultUI: false,
-              };
-
-          const map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-          setMarkers(center, map);
-        }
-
-        function setMarkers(center, map) {
-          const industri = @json($industri);
-          const siswa = @json($siswa);
-          console.log(industri);
-          console.log(siswa);
-
-          //loop between each of the json elements
-          for (let i = 0, length = industri.length; i < length; i++) {
-            const data = industri[i],
-                  sw = siswa[i];
-            latLng = new google.maps.LatLng(data.latitude, data.longitude);
-
-                const marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    title: data.nama
-                });
-                infoBox(map, marker, data, sw);
-          }
-
-        }
-
-        function infoBox(map, marker, data, sw) {
-          google.maps.event.addListener(marker, "click", function(e) {
-            // Attaching a click event to the current marker
-            const infoWindow = new google.maps.InfoWindow();
-          if (sw.length == 1) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas
-              );
-          } else if(sw.length == 2) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas
-              );
-          } else if(sw.length == 3) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas
-              );
-          } else if(sw.length == 4) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas
-              );
-          } else if(sw.length == 5) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas
-              );
-          } else if(sw.length == 6) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas+"<br>"+sw[5].nama+sw[5].kelas
-              );
-          } else if(sw.length == 7) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas+"<br>"+sw[5].nama+sw[5].kelas+"<br>"+sw[6].nama+sw[6].kelas
-              );
-          } else if(sw.length == 8) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas+"<br>"+sw[5].nama+sw[5].kelas+"<br>"+sw[6].nama+sw[6].kelas+"<br>"+sw[7].nama+sw[7].kelas
-              );
-          } else if(sw.length == 9) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas+"<br>"+sw[5].nama+sw[5].kelas+"<br>"+sw[6].nama+sw[6].kelas+"<br>"+sw[7].nama+sw[7].kelas+"<br>"+sw[8].nama+sw[8].kelas
-              );
-          } else if(sw.length == 10) {
-            infoWindow.setContent(
-              "<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p><br>"+sw[0].nama+sw[0].kelas+"<br>"+sw[1].nama+sw[1].kelas+"<br>"+sw[2].nama+sw[2].kelas+"<br>"+sw[3].nama+sw[3].kelas+"<br>"+sw[4].nama+sw[4].kelas+"<br>"+sw[5].nama+sw[5].kelas+"<br>"+sw[6].nama+sw[6].kelas+"<br>"+sw[7].nama+sw[7].kelas+"<br>"+sw[8].nama+sw[8].kelas+"<br>"+sw[9].nama+sw[9].kelas
-              );
-          }
-            infoWindow.open(map, marker);
-          });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  <script type="text/javascript"
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5yEZ-F3NhpHJQw15bRqSHHIVUCwuAv8c&callback=initialize" async
-    defer></script>
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-
+  </div> -->
   <div class="row justify-content-center">
     <div class="col-10">
 
@@ -257,7 +145,31 @@
 
     </div>
   </div>
+  <!-- <script>
+      const map = L.map('map').setView([-7.29, 112.725], 13);
 
+      const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+
+      // Mengambil data marker dari PHP
+      const markersData = ;
+      // Loop through marker data and create markers
+      markersData.forEach(data => {
+          const marker = L.marker(data.coordinates).addTo(map)
+              .bindPopup(data.popupContent).openPopup();
+      });
+
+      function onMapClick(e) {
+          popup
+              .setLatLng(e.latlng)
+              .setContent(`You clicked the map at ${e.latlng.toString()}`)
+              .openOn(map);
+      }
+
+      map.on('click', onMapClick);
+  </script> -->
 </div>
 @endif
 @endsection

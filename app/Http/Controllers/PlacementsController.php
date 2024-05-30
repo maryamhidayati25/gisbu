@@ -197,6 +197,8 @@ class PlacementsController extends Controller
                 ->where('industries.nama', 'like', "%" . $request->keywrd . "%")
                 ->count();
             $ind = Placement::where('n_induk', $ni->n_induk)->get();
+            $industri = null;
+            $siswa = null;
             foreach ($ind as $in) {
                 $industri[] = app('App\Http\Controllers\PlacementsController')->getInd($in->id_industri);
                 $siswa[] = app('App\Http\Controllers\PlacementsController')->getSiswas($in->id_industri);
@@ -213,6 +215,18 @@ class PlacementsController extends Controller
                 ->where('students.kelas', 'like', "%" . $request->keywrd . "%")
                 ->where('industries.nama', 'like', "%" . $request->keywrd . "%")
                 ->paginate(10);
+            
+            // $markersData[] = [];
+            // $count = 0;
+            // foreach($industri as $ind){
+            //     $markersData[$count] = [
+            //     'coordinates' => [$ind->latitude, $ind->longitude],
+            //     'popupContent' => '<b>'.$ind->nama.'</b><br />'.$ind->alamat,
+            //     ];
+            //     $count++;
+            // }
+            // $marker = json_encode($markersData);
+            
             return view('multi.datasiswa', compact('data', 'sistem', 'siswa', 'industri', 'json1', 'json2'));
         } elseif (Auth::user()->is_industri == 1) {
             $idi = Industrie::where('id_user', Auth::user()->id)->first();
@@ -234,6 +248,8 @@ class PlacementsController extends Controller
                 ->where('students.jurusan', 'like', "%" . $request->keywrd . "%")
                 ->where('students.kelas', 'like', "%" . $request->keywrd . "%")
                 ->paginate(10);
+
+
             return view('multi.datasiswa', compact('data', 'siswa'));
         }
         Session::flash('bidden', 'Anda tidak memiliki Hak Akses!!');
