@@ -71,7 +71,19 @@ class IndustriesController extends Controller
                 ->orderby('nama', 'asc')
                 ->count();
             $json = json_encode(array('results' => $industri));
-            return view('siswa.pilihindustri', compact('industri', 'json', 'data', 'diterima', 'terima'));
+
+            $markersData[] = [];
+            $count = 0;
+            foreach($industri as $ind){
+                $markersData[$count] = [
+                'coordinates' => [$ind->latitude, $ind->longitude],
+                'popupContent' => '<b>'.$ind->nama.'</b><br />'.$ind->alamat,
+                ];
+                $count++;
+            }
+            $marker = json_encode($markersData);
+
+            return view('siswa.pilihindustri', compact('industri', 'json', 'data', 'diterima', 'terima','marker'));
         }
         Session::flash('bidden', 'Anda tidak memiliki Hak Akses!!');
         return redirect()->back();

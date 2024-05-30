@@ -2,33 +2,51 @@
 
 @section('mystyle')
 <style>
-  /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-  #map-canvas {
-    height: 100%;
-    width: 100%;
-  }
-
-  /* Optional: Makes the sample page fill the window.
   html,
   body {
     height: 100%;
     margin: 0;
     padding: 0;
-  } */
+  }
+
+  #map {
+    height: 70%;
+    width: 100%;
+  }
+
+  #map-canvas {
+    height: 70%;
+    width: 100%;
+  }
+
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+
+    #map-canvas {
+      height: 100%;
+      width: 100%;
+    }
+  }
 </style>
 @endsection
 
 @section('title', 'Pilih Lokasi')
 
 @section('isi')
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 <div class=" container-fluid">
   @if ($diterima == null)
   <div class="row">
     <div class="col col-md-8">
       <div class=" card p-0" style="height: 480px;">
         <div class=" card-body p-1">
-          <div id="map-canvas"></div>
+          <div id="map" style="width: auto;"></div>
         </div>
       </div>
 
@@ -310,75 +328,32 @@
       </script> --}}
 
       <script>
-        function initialize() {
-          const latitude = -7.2756349,
-              longitude = 107.9162711,
-              // radius = 25000, //how is this set up
-              center = new google.maps.LatLng(latitude,longitude),
-              // bounds = new google.maps.Circle({center: center, radius: radius}).getBounds(),
-              mapOptions = {
-                center: center,
-                zoom: 10,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                scrollwheel: false,
-                disableDefaultUI: false,
-              };
+            const map = L.map('map').setView([-7.29, 112.725], 13);
 
-          const map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
 
-          setMarkers(center, map);
-        }
+            // Mengambil data marker dari PHP
+            const markersData = <?=$marker?>;
+            // Loop through marker data and create markers
+            markersData.forEach(data => {
+                const marker = L.marker(data.coordinates).addTo(map)
+                    .bindPopup(data.popupContent).openPopup();
+            });
 
-        function setMarkers(center, map) {
-          const json = @json($industri);
-          console.log(json);
+            function onMapClick(e) {
+                popup
+                    .setLatLng(e.latlng)
+                    .setContent(`You clicked the map at ${e.latlng.toString()}`)
+                    .openOn(map);
+            }
 
-          // const circle = new google.maps.Circle({
-          //   strokeColor: '#000000',
-          //   strokeOpacity: 0.25,
-          //   strokeWeight: 1.0,
-          //   fillColor: '#ffffff',
-          //   fillOpacity: 0.1,
-          //   clickable: false,
-          //   map: map,
-          //   center: center,
-          //   radius: radius
-          // });
-          // const bounds = circle.getBounds();
+            map.on('click', onMapClick);
+        </script>
+      
 
-          //loop between each of the json elements
-          for (let i = 0, length = json.length; i < length; i++) {
-            const data = json[i],
-            latLng = new google.maps.LatLng(data.latitude, data.longitude);
-
-            // if(bounds.contains(latLng)) {
-                // Creating a marker and putting it on the map
-                const marker = new google.maps.Marker({
-                    position: latLng,
-                    map: map,
-                    title: data.nama
-                });
-                infoBox(map, marker, data);
-            // }
-          }
-
-          // circle.bindTo('center', marker, 'position');
-        }
-
-        function infoBox(map, marker, data) {
-          google.maps.event.addListener(marker, "click", function(e) {
-            // Attaching a click event to the current marker
-          const infoWindow = new google.maps.InfoWindow();
-            infoWindow.setContent("<div><h5>"+data.nama+"</h5><p><b>"+ data.nama +"</b>, berada di "+ data.alamat +"</p>"+'<a href="/mengajukan/'+ data.id +'" class="badge badge-primary">Ajukan PKL</a>'+"</div>");
-            infoWindow.open(map, marker);
-          });
-        }
-
-        google.maps.event.addDomListener(window, 'load', initialize);
-      </script>
-      <script type="text/javascript"
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5yEZ-F3NhpHJQw15bRqSHHIVUCwuAv8c&callback=initialize"
-        async defer></script>
       <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
       <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
 
