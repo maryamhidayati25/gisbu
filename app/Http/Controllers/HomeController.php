@@ -103,7 +103,7 @@ class HomeController extends Controller
                 ];
 
             $marker = json_encode($markersData);
-            return view('home', compact('data', 'indu', 'guru', 'siswa', 'sch', 'kunjungan','marker','marker'));
+            return view('home', compact('data', 'indu', 'guru', 'siswa', 'sch', 'kunjungan','marker'));
         } elseif (Auth::user()->is_industri == 1) {
             $ind = Industrie::where('id_user', Auth::user()->id)->first();
             $siswa = Placement::where('id_industri', $ind->id)->select('nis')->count();
@@ -147,7 +147,7 @@ class HomeController extends Controller
                 ];
 
             $marker = json_encode($markersData);
-            return view('home', compact('indu', 'siswa', 'json1', 'json2', 'tugas', 'absen', 'siswamagang', 'students', 'industri'));
+            return view('home', compact('indu', 'siswa', 'json1', 'json2', 'tugas', 'absen', 'siswamagang', 'students', 'industri','marker'));
         } elseif (Auth::user()->is_siswa == 1) {
             $siswa = Student::where('id_user', Auth::user()->id)->first();
             $waktu = Placement::where('nis', $siswa->nis)->first();
