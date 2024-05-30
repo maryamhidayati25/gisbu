@@ -72,8 +72,8 @@ class StudentsController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'nis'       => 'required|size:9',
-            'nama'      => 'required|min:2|max:50',
+            'nis'       => 'required',
+            'nama'      => 'required',
             'jk'        => 'required',
             'jurusan'   => 'required',
             'kelas'     => 'required',
@@ -197,8 +197,8 @@ class StudentsController extends Controller
         $ceken = User::where('id', $request->ids)->first();
         if ($ceken->email == $request->email_guru && $ceken->n_wa == $request->n_wa_guru) {
             $rules = [
-                'nis'       => 'required|size:9',
-                'nama'      => 'required|min:2|max:50',
+                'nis'       => 'required',
+                'nama'      => 'required',
                 'jk'        => 'required',
                 'jurusan'   => 'required',
                 'kelas'     => 'required',
@@ -210,8 +210,8 @@ class StudentsController extends Controller
             ];
         } elseif ($ceken->email == $request->email_guru) {
             $rules = [
-                'nis'       => 'required|size:10',
-                'nama'      => 'required|min:2|max:50',
+                'nis'       => 'required',
+                'nama'      => 'required',
                 'jk'        => 'required',
                 'jurusan'   => 'required',
                 'kelas'     => 'required',
@@ -219,33 +219,33 @@ class StudentsController extends Controller
                 'kota'      => 'required',
                 'provinsi'  => 'required',
                 'email'     => 'required|email',
-                'n_wa'      => 'required|unique:users,n_wa',
+                'n_wa'      => 'required',
             ];
         } elseif ($ceken->n_wa == $request->n_wa_guru) {
             $rules = [
-                'nis'       => 'required|size:10',
-                'nama'      => 'required|min:2|max:50',
+                'nis'       => 'required',
+                'nama'      => 'required',
                 'jk'        => 'required',
                 'jurusan'   => 'required',
                 'kelas'     => 'required',
                 'alamat'    => 'required',
                 'kota'      => 'required',
                 'provinsi'  => 'required',
-                'email'     => 'required|email|unique:users,email',
+                'email'     => 'required|email',
                 'n_wa'      => 'required',
             ];
         } else {
             $rules = [
-                'nis'       => 'required|size:10',
-                'nama'      => 'required|min:2|max:50',
+                'nis'       => 'required',
+                'nama'      => 'required',
                 'jk'        => 'required',
                 'jurusan'   => 'required',
                 'kelas'     => 'required',
                 'alamat'    => 'required',
                 'kota'      => 'required',
                 'provinsi'  => 'required',
-                'email'     => 'required|email|unique:users,email',
-                'n_wa'      => 'required|unique:users,n_wa',
+                'email'     => 'required|email',
+                'n_wa'      => 'required',
             ];
         }
 
