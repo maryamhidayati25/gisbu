@@ -136,11 +136,11 @@ class SubmissionsController extends Controller
             'sampai.date'      => 'Harus berupa tanggal',
         ];
 
-        $validator = Validator::make($request->all(), $rules, $messages);
+        // $validator = Validator::make($request->all(), $rules, $messages);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
-        }
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput($request->all);
+        // }
 
         $simpan = new Submission;
         $simpan->nis = strtolower($request->nis);

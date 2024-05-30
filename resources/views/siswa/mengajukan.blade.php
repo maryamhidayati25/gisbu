@@ -8,7 +8,7 @@
     <div class="col col-md-8">
       <h3>PENGAJUAN</h3>
       <div class="card"">
-        <div class=" card-body">
+        <div class="card-body">
         <form action="{{route('store_ajuan')}}" method="post">
           @csrf
           <div class="row">

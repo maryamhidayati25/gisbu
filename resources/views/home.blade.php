@@ -176,7 +176,7 @@
     <div class=" col-6">
       <div class=" card p-0" style="height: 480px;">
         <div class=" card-body p-1">
-          <div id="map-canvas"></div>
+          <div id="map" style="width: auto;"></div>
         </div>
       </div>
     </div>

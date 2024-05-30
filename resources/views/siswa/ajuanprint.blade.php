@@ -46,7 +46,13 @@
           <tbody>
             <tr>
               <td>Nomor</td>
-              <td>: 423.6/{{$ajuan->id}}/CDW.XI</td>
+              <?php 
+                try{
+                  echo '<td>: 423.6/'.$ajuan->id.'/CDW.XI</td>';
+                }catch (Exception $e) {
+                  echo '<td>: 423.6/'.date('dmy-Hi').'/CDW.XI</td>';
+                }
+              ?>
             </tr>
             <tr>
               <td>Lampiran</td>
