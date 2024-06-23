@@ -195,8 +195,8 @@ class TeachersController extends Controller
         $ceken = User::where('id', $request->idg)->first();
         if ($ceken->email == $request->email_guru && $ceken->n_wa == $request->n_wa_guru) {
             $rules = [
-                'ni'                    => 'required|min:16|max:18',
-                'nama_guru'             => 'required|min:2|max:50',
+                'ni'                    => 'required',
+                'nama_guru'             => 'required',
                 'jk_guru'               => 'required',
                 'jurusan_guru'          => 'required',
                 'alamat_guru'           => 'required',
@@ -207,39 +207,39 @@ class TeachersController extends Controller
             ];
         } elseif ($ceken->email == $request->email_guru) {
             $rules = [
-                'ni'                    => 'required|min:16|max:18',
-                'nama_guru'             => 'required|min:2|max:50',
+                'ni'                    => 'required',
+                'nama_guru'             => 'required',
                 'jk_guru'               => 'required',
                 'jurusan_guru'          => 'required',
                 'alamat_guru'           => 'required',
                 'kota_guru'             => 'required',
                 'provinsi_guru'         => 'required',
                 'email_guru'            => 'required|email',
-                'n_wa_guru'             => 'required|unique:users,n_wa',
+                'n_wa_guru'             => 'required',
             ];
         } elseif ($ceken->n_wa == $request->n_wa_guru) {
             $rules = [
-                'ni'                    => 'required|min:16|max:18',
-                'nama_guru'             => 'required|min:2|max:50',
+                'ni'                    => 'required',
+                'nama_guru'             => 'required',
                 'jk_guru'               => 'required',
                 'jurusan_guru'          => 'required',
                 'alamat_guru'           => 'required',
                 'kota_guru'             => 'required',
                 'provinsi_guru'         => 'required',
-                'email_guru'            => 'required|email|unique:users,email',
+                'email_guru'            => 'required|email',
                 'n_wa_guru'             => 'required',
             ];
         } else {
             $rules = [
-                'ni'                    => 'required|min:16|max:18',
-                'nama_guru'             => 'required|min:2|max:50',
+                'ni'                    => 'required',
+                'nama_guru'             => 'required',
                 'jk_guru'               => 'required',
                 'jurusan_guru'          => 'required',
                 'alamat_guru'           => 'required',
                 'kota_guru'             => 'required',
                 'provinsi_guru'         => 'required',
-                'email_guru'            => 'required|email|unique:users,email',
-                'n_wa_guru'             => 'required|unique:users,n_wa',
+                'email_guru'            => 'required|email',
+                'n_wa_guru'             => 'required',
             ];
         }
 

@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                   <label for="jk">Jenis Kelamin</label>
-                  <select class="form-control form-select form-select-md" name="jk" id="jk">
+                  <select class="form-control form-select form-select-md" name="jk_guru" id="jk">
                     <option value="">Pilih Jenis Kelamin</option>
                     <option <?=($teacher->jk == "Laki - laki")?"selected":""?> value="Laki - laki">Laki - laki</option>
                     <option <?=($teacher->jk == "Perempuan")?"selected":""?> value="Perempuan">Perempuan</option>
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group">
                   <label for="jurusan">Jurusan</label>
-                  <select class="form-control form-select form-select-md" name="jurusan" id="jurusan">
+                  <select class="form-control form-select form-select-md" name="jurusan_guru" id="jurusan">
                     @foreach( $jurusan as $data )
                     <option <?=($teacher->jurusan == $teacher->jurusan)?"selected":""?> value="{{ $data->jurusan }}">{{ $data->jurusan }}</option>
                     @endforeach
@@ -48,7 +48,7 @@
             <div class="col col-md-6">
             <div class="form-group">
                 <label for="provinsi">Provinsi</label>
-                <select class="form-control form-select form-select-md" name="provinsi" id="provinsi"
+                <select class="form-control form-select form-select-md" name="provinsi_guru" id="provinsi"
                   data-dependent="kota">
                   @foreach( $provinsi as $data )
                   <option <?=($teacher->provinsi == $data->provinsi)?"selected":""?> value="{{ $data->provinsi }}">{{ $data->provinsi }}</option>
@@ -59,7 +59,7 @@
               </div>
               <div class="form-group">
                 <label for="kota">Kota</label>
-                <select class="form-control form-select form-select-md" name="kota" id="kota" data-dependent="kota">
+                <select class="form-control form-select form-select-md" name="kota_guru" id="kota" data-dependent="kota">
                   @foreach( $kota as $data )
                   <option <?=($teacher->kota == $data->jk." ".$data->kota)?"selected":""?> value="{{ $data->jk }} {{ $data->kota }}">{{ $data->kota }}
                     ({{ $data->jk }} {{ $data->kota }})</option>
