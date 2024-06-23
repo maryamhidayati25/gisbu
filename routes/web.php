@@ -217,6 +217,11 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('/hasil_kuis/{id}', [App\Http\Controllers\MyquizzesController::class, 'hasil_kuis']);
 
+    // penilaian
+    Route::get('/penilaian', [App\Http\Controllers\PlacementsController::class, 'penilaian'])->name('penilaian');
+    Route::get('/beri_penilaian/{id}', [App\Http\Controllers\ScoresController::class, 'beri_penilaian']);
+    Route::post('/nilai_penilaian', [App\Http\Controllers\ScoresController::class, 'nilai_penilaian'])->name('nilai_penilaian');
+
     // laporan
     Route::get('/laporan', [App\Http\Controllers\ReportsController::class, 'laporan'])->name('laporan');
     Route::post('/store_laporan', [App\Http\Controllers\ReportsController::class, 'store'])->name('store_laporan');
@@ -224,9 +229,4 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/edit_laporan', [App\Http\Controllers\ReportsController::class, 'update'])->name('edit_laporan');
     Route::post('/respon_laporan', [App\Http\Controllers\ReportsController::class, 'respon_laporan'])->name('respon_laporan');
     Route::get('/lihat_laporan/{report}', [App\Http\Controllers\ReportsController::class, 'lihat_laporan']);
-
-    // penilaian
-    Route::get('/penilaian', [App\Http\Controllers\PlacementsController::class, 'penilaian'])->name('penilaian');
-    Route::get('/beri_penilaian/{id}', [App\Http\Controllers\ScoresController::class, 'beri_penilaian']);
-    Route::post('/nilai_penilaian', [App\Http\Controllers\ScoresController::class, 'nilai_penilaian'])->name('nilai_penilaian');
 });
