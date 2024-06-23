@@ -43,7 +43,7 @@
                 <span class="text-danger">@error('masuk') {{ $message }} @enderror</span>
               </div>
               <div class="col">
-                <label for="keluar">Wakktu Keluar</label>
+                <label for="keluar">Waktu Keluar</label>
                 <input type="time" name="keluar" id="keluar">
                 <span class="text-danger">@error('keluar') {{ $message }} @enderror</span>
               </div>

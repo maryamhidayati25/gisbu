@@ -60,7 +60,7 @@
             </tr>
             <tr>
               <td>Perihal</td>
-              <td>: Permohonan Tempa Praktek Kerja Industri</td>
+              <td>: Permohonan Tempat Praktek Kerja Industri</td>
             </tr>
             <tr>
               <td colspan="2" height="20"></td>
