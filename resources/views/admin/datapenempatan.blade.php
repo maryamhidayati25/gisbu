@@ -88,7 +88,7 @@
                 @csrf
                 <button type="submit" class="btn btn-sm btn-warning">Edit</button>
               </form>
-              <form action="/hapus_penempatan/{{$tm->id}}" method="post" class="d-inline">
+              <form action="/hapus_penempatan/{{$tm->id}}" method="post" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus Penempatan {{ $tm->nama_siswa }} ?')">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
               </form>
