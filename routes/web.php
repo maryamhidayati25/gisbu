@@ -218,9 +218,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/hasil_kuis/{id}', [App\Http\Controllers\MyquizzesController::class, 'hasil_kuis']);
 
     // penilaian
-    Route::get('/penilaian', [App\Http\Controllers\PlacementsController::class, 'penilaian'])->name('penilaian');
-    Route::get('/beri_penilaian/{id}', [App\Http\Controllers\ScoresController::class, 'beri_penilaian']);
-    Route::post('/nilai_penilaian', [App\Http\Controllers\ScoresController::class, 'nilai_penilaian'])->name('nilai_penilaian');
+    Route::get('/score', [App\Http\Controllers\PlacementsController::class, 'score'])->name('score');
+    Route::get('/beri_score/{id}', [App\Http\Controllers\ScoresController::class, 'beri_score']);
+    Route::post('/change_score', [App\Http\Controllers\ScoresController::class, 'change_score'])->name('change_score');
 
     // laporan
     Route::get('/laporan', [App\Http\Controllers\ReportsController::class, 'laporan'])->name('laporan');

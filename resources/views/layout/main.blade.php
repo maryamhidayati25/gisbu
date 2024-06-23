@@ -430,7 +430,7 @@
       if($mpen == 0) :
       ?>
       <li class="nav-item" style="margin-top: -10px;">
-        <a class="nav-link" href="/penilaian" style="pointer-events: none; color: rgb(73, 73, 73);">
+        <a class="nav-link" href="/score" style="pointer-events: none; color: rgb(73, 73, 73);">
           <i class="fas fa-fw fa-ban"></i>
           <span>Penilaian</span></a>
       </li>
@@ -438,7 +438,7 @@
       elseif(($skr >= $bniaw && $skr <= $bniakh)||($bniakh == null && $skr >= $bniaw)||($bniaw == null && $skr <= $bniakh)||($bniaw == null && $bniakh == null)||($mpen == 1)) :
       ?>
       <li class="nav-item" style="margin-top: -10px;">
-        <a class="nav-link" href="/penilaian">
+        <a class="nav-link" href="/score">
           <i class="fas fa-fw fa-pen-square"></i>
           <span>Penilaian</span></a>
       </li>
@@ -446,7 +446,7 @@
       else :
       ?>
       <li class="nav-item" style="margin-top: -10px;">
-        <a class="nav-link" href="/penilaian" style="pointer-events: none; color: rgb(73, 73, 73);">
+        <a class="nav-link" href="/score" style="pointer-events: none; color: rgb(73, 73, 73);">
           <i class="fas fa-fw fa-ban"></i>
           <span>Penilaian</span></a>
       </li>

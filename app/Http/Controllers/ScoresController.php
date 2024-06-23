@@ -67,7 +67,7 @@ class ScoresController extends Controller
         //
     }
 
-    public function beri_penilaian($id)
+    public function beri_score($id)
     {
         if (Auth::user()->is_industri == 1) {
             $siswa = Student::where('id_user', $id)->first();
@@ -434,7 +434,7 @@ class ScoresController extends Controller
         return redirect()->back();
     }
 
-    public function nilai_penilaian(Request $request, Score $score)
+    public function change_score(Request $request, Score $score)
     {
         $rules = [
             'nisik'          => 'required|numeric|min:10|max:100',
@@ -481,7 +481,7 @@ class ScoresController extends Controller
 
         if ($save) {
             Session::flash('success', 'Tugas berhasil diberi nilai');
-            return redirect('/penilaian');
+            return redirect('/score');
         }
         Session::flash('fai', 'Silahkan ulangi beberapa saat lagi');
         return redirect()->back();

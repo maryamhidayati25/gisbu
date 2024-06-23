@@ -37,7 +37,7 @@
               @endforeach
               <h4 class="card-title">{{ $mg->nama }}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{ $mg->kelas }} ({{ $mg->jurusan }})</h6>
-              <a href="/beri_penilaian/{{ $mg->id_user }}" class=" card-link badge badge-primary">Beri Nilai</a>
+              <a href="/beri_score/{{ $mg->id_user }}" class=" card-link badge badge-primary">Beri Nilai</a>
             </div>
           </div>
         </div>

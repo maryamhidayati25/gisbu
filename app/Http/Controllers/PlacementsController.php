@@ -326,7 +326,7 @@ class PlacementsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function penilaian()
+    public function score()
     {
         if (Auth::user()->is_industri == 1) {
             $idi = Industrie::where('id_user', Auth::user()->id)->first();

@@ -18,7 +18,7 @@
           <h4 class="card-title text-center">{{ $mg->nama }}</h4>
           <h6 class="card-subtitle mb-2 text-muted text-center">{{ $mg->kelas }} ({{ $mg->jurusan }})</h6>
           <hr>
-          <form action="{{ route('nilai_penilaian') }}" method="post">
+          <form action="{{ route('change_score') }}" method="post">
             @csrf
             <input type="hidden" name="nis" value="{{ $mg->nis }}">
             <input type="hidden" name="ids" value="{{ $scre->id }}">
@@ -45,7 +45,7 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary float-right">Beri Nilai</button>
-            <a href="/penilaian" class=" btn btn-secondary">Batal</a>
+            <a href="/score" class=" btn btn-secondary">Batal</a>
           </form>
         </div>
       </div>
