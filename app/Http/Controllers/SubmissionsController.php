@@ -38,6 +38,7 @@ class SubmissionsController extends Controller
         $ajuan = DB::table('submissions')
             ->join('industries', 'submissions.id_industri', '=', 'industries.id')
             ->select('industries.nama', 'industries.alamat', 'industries.id')
+            ->groupBy('industries.id', 'industries.nama', 'industries.alamat') // Menambahkan groupBy
             ->orderBy('industries.id')
             ->get();
         return view('admin.pengajuansiswa', compact('ajuan'));
