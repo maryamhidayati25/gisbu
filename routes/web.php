@@ -114,7 +114,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/edit_penguji', [App\Http\Controllers\TestsController::class, 'update'])->name('update_penguji');
 
     // laporan nilai
-    Route::get('/laporan_nilai', [App\Http\Controllers\ScoresController::class, 'index'])->name('lapnil');
+    Route::get('/laporan_score', [App\Http\Controllers\ScoresController::class, 'index'])->name('lapnil');
     Route::get('/detail_nilai/{score}', [App\Http\Controllers\ScoresController::class, 'show']);
     Route::get('/edit_nilai/{score}', [App\Http\Controllers\ScoresController::class, 'edit']);
     Route::post('/edit_nilai', [App\Http\Controllers\ScoresController::class, 'update'])->name('update_nilai');

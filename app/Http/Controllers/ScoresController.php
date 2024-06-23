@@ -425,7 +425,7 @@ class ScoresController extends Controller
 
             if ($save2) {
                 Session::flash('success', 'Berhasil diberi nilai');
-                return redirect('/laporan_nilai');
+                return redirect('/laporan_score');
             }
             Session::flash('fai', 'Silahkan ulangi beberapa saat lagi');
             return redirect()->back();
