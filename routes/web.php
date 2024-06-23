@@ -96,7 +96,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/tambah_penempatan', [App\Http\Controllers\PlacementsController::class, 'store'])->name('store_penempatan');
     Route::get('/edit_penempatan/{placement}', [App\Http\Controllers\PlacementsController::class, 'edit']);
     Route::post('/edit_penempatan', [App\Http\Controllers\PlacementsController::class, 'update'])->name('update_penempatan');
+    Route::get('/edit_penempatan/{placement}', [App\Http\Controllers\PlacementsController::class, 'edit']);
     Route::get('/detail_penempatan/{placement}', [App\Http\Controllers\PlacementsController::class, 'show']);
+    Route::post('/hapus_penempatan/{placement}', [App\Http\Controllers\PlacementsController::class, 'delete']);
 
     // Akses Menu
     Route::get('/akses_menu', [App\Http\Controllers\MenusController::class, 'index'])->name('akses_menu');

@@ -414,4 +414,10 @@ class PlacementsController extends Controller
         Session::flash('fai', 'Gagal! Silahkan ulangi beberapa saat lagi');
         return redirect()->back();
     }
+
+    public function delete($idPlacement)
+    {
+        Placement::destroy($idPlacement);
+        return redirect()->back();
+    }
 }

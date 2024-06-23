@@ -38,7 +38,7 @@
             <th scope="col">Kelas</th>
             <th scope="col">Guru Pembimbing</th>
             <th scope="col">Tempat</th>
-            <th scope="col">Aksi</th>
+            <th scope="col" style="width:20%">Aksi</th>
           </tr>
         </thead>
         <tbody>
@@ -84,9 +84,13 @@
                 @csrf
                 <button type="submit" class="btn btn-sm btn-info ">Detail</button>
               </form>
-              <form action="/edit_penempatan/{{$tm->id}}" method="get" class=" d-inline">
+              <form action="/edit_penempatan/{{$tm->id}}" method="get" class="d-inline">
                 @csrf
                 <button type="submit" class="btn btn-sm btn-warning">Edit</button>
+              </form>
+              <form action="/hapus_penempatan/{{$tm->id}}" method="post" class="d-inline">
+                @csrf
+                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
               </form>
             </td>
           </tr>
