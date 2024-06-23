@@ -5,6 +5,20 @@
 @section('isi')
 
 @if (Auth::user()->is_industri == 1)
+<?php
+
+// Array mapping nama hari dari bahasa Inggris ke bahasa Indonesia
+$days = [
+    'Sunday' => 'Minggu',
+    'Monday' => 'Senin',
+    'Tuesday' => 'Selasa',
+    'Wednesday' => 'Rabu',
+    'Thursday' => 'Kamis',
+    'Friday' => 'Jumat',
+    'Saturday' => 'Sabtu'
+];
+
+?>
 <div class="container">
 
   <div class="row">
@@ -27,7 +41,7 @@
             <tbody>
               @if ($data <= $jhk) @for ($i=1; $i <=$jhk; $i++) <tr>
                 <th>{{$i}}</th>
-                <td>{{$hari[] = date('l', strtotime($hari[] = $h->addDay()))}}</td>
+                <td>{{$hari[] = $days[date('l', strtotime($hari[] = $h->addDay()))]}}</td>
                 <td>{{$tang[] = date('Y-m-d', strtotime($tang[] = $t1->addDay()))}}</td>
                 <td>
                   <div class="row">
@@ -77,7 +91,7 @@
               @foreach ($jadw as $jdw)
               <tr>
                 <th>{{ $loop->iteration }}</th>
-                <td>{{date('l', strtotime($jdw->tanggal))}}</td>
+                <td>{{$days[date('l', strtotime($jdw->tanggal))]}}</td>
                 <td>{{$jdw->tanggal}}</td>
                 <td>
                   @if ($jdw->masuk == 1)
